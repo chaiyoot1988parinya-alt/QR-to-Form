@@ -17,10 +17,13 @@
     }
 
     function onScanSuccess(decodedText) {
-      const jobNo = extractJobNo(decodedText);
-      const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScVEHLH_YKSXYIaEracJkMwsIEywTR6JnFXV6NIunh5J8326Q/viewform?entry.2114696343=" + encodeURIComponent(jobNo);
-      window.location.href = formUrl;
-    }
+  const jobNo = extractJobNo(decodedText);
+  const entryId = "entry.1737537205"; // ใช้ entry ID ที่ถูกต้อง
+  const formBase = "https://docs.google.com/forms/d/e/1FAIpQLScVEHLH_YKSXYIaEracJkMwsIEywTR6JnFXV6NIunh5J8326Q/viewform";
+  const fullUrl = `${formBase}?usp=pp_url&${entryId}=${encodeURIComponent(jobNo)}`;
+  window.location.href = fullUrl;
+}
+
 
     new Html5Qrcode("reader").start(
       { facingMode: "environment" },
@@ -30,3 +33,4 @@
   </script>
 </body>
 </html>
+
